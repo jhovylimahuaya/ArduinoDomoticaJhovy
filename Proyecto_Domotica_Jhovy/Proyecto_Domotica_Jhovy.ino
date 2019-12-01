@@ -2,9 +2,9 @@
 #include <Ethernet.h>
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };//Ponemos la dirección MAC de la Ethernet Shield
-IPAddress ip(172,22,10,7); //Asignamos  la IP al Arduino
-byte gateway[] = { 172, 22, 10, 60 };                   // gateway IP
-byte subnet[] = { 255, 255, 255, 192 };
+IPAddress ip(192,168,1,109); //Asignamos  la IP al Arduino
+//byte gateway[] = { 172, 22, 10, 60 };                   // gateway IP
+//byte subnet[] = { 255, 255, 255, 192 };
 EthernetServer server(80); //Creamos un servidor Web con el puerto 80 que es el puerto HTTP por defecto
 
 int FOTRESISPin=A0;
@@ -27,7 +27,8 @@ void setup()
   Serial.begin(9600);
  
   // Inicializamos la comunicación Ethernet y el servidor
-  Ethernet.begin(mac, ip, gateway, subnet);
+  Ethernet.begin(mac, ip);
+//  Ethernet.begin(mac, ip, gateway, subnet);
   server.begin();
   
   Serial.print("server is at ");
